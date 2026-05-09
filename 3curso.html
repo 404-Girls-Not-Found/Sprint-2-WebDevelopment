@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/style3.css">
+    <title>Curso</title>
+</head>
+<body>
+    <div class="inicial">
+        <div class="principal">
+            <img src="./images/fundo_preto.png" alt="tela de inicio">
+
+            <i class="bx bx-arrow-big-left-line btn-voltar" onclick="window.location.href='./1index.html'"></i>
+
+            <h1 id="configure">Configure o modo aula</h1>
+
+            <div class="barra-progresso-curso">
+                <div class="step-atual"></div>
+                <div class="step-meio"></div>
+                <div class="step"></div>
+            </div>
+            
+            <div>
+                <i class="bx bx-book" ></i>
+            </div>
+            
+            <h1 id="curso">Seu curso</h1>
+            <p id="estudando">O que você está estudando?</p>
+
+            <h2>Nome do Curso</h2>
+
+            <div class="detalhes">
+                <p>O nome do seu curso ajuda a identificar sua programação. Na próxima etapa, você vai poder adicionar suas matérias e horários de aulas específicos</p>
+            </div>
+            <form action="./4materias.html" method="get">
+                <input type="text" required placeholder="Ciências da computação, Medicina, Direito..." id="input-curso">
+                <button type="submit" class="btn-continuar">Continuar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            const valor = document.getElementById('input-curso').value;
+            sessionStorage.setItem('nomeCurso', valor);
+        });
+    </script>
+</body>
+</html>
