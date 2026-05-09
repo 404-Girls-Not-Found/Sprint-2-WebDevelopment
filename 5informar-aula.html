@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/style5.css">
+    <title>Informe Aula</title>
+</head>
+<body>
+    <div class="inicial">
+        <div class="principal">
+            <img src="./images/fundo_preto.png" alt="tela de inicio">
+
+            <i class="bx bx-arrow-big-left-line btn-voltar" onclick="window.location.href='./4materias.html'"></i>
+
+            <h1 id="configure">Configure o modo aula</h1>
+
+            <div class="barra-progresso-curso">
+                <div class="step-atual"></div>
+                <div class="step-meio"></div>
+                <div class="step"></div>
+            </div>
+
+            <div class="topo-horario">
+                <h1>Horário de aulas</h1>
+                <p>Adicione matérias e horários</p>
+            </div>
+
+            <div class="fundo">
+                <form id="form-aula" action="./6aula-mais.html" method="get">
+                    <h1>Nova Aula</h1>
+                    <p class="campo">Nome da matéria</p>
+                    <input type="text" required placeholder="Cálculo, Histórias, Ciências..." id="input-materia" name="materia">
+
+                    <div class="dias">
+                        <p class="campo">Dias da semana</p>
+                        <div class="dias-botoes">
+                            <input type="radio" name="dia" id="seg" hidden checked>
+                            <label for="seg">Seg</label>
+
+                            <input type="radio" name="dia" id="ter" hidden>
+                            <label for="ter">Ter</label>
+
+                            <input type="radio" name="dia" id="qua" hidden>
+                            <label for="qua">Qua</label>
+
+                            <input type="radio" name="dia" id="qui" hidden>
+                            <label for="qui">Qui</label>
+
+                            <input type="radio" name="dia" id="sex" hidden>
+                            <label for="sex">Sex</label>
+
+                            <input type="radio" name="dia" id="sab" hidden>
+                            <label for="sab">Sáb</label>
+                        </div>
+                    </div>
+
+                    <div class="horarios">
+                        <div class="linha-horarios">
+                            <div>
+                                <p class="label-campo">Horário de início</p>
+                                <div class="select-horario">
+                                    <select class="input-horario" id="inicio-hora" name="inicio-hora">
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option selected>08</option>
+                                        <option>09</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                    </select>
+                                    <span class="separador">:</span>
+                                    <select class="input-horario" id="inicio-min" name="inicio-min">
+                                        <option selected>00</option>
+                                        <option>15</option>
+                                        <option>30</option>
+                                        <option>45</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="label-campo">Horário de término</p>
+                                <div class="select-horario">
+                                    <select class="input-horario" id="termino-hora" name="termino-hora">
+                                        <option>06</option>
+                                        <option>07</option>
+                                        <option>08</option>
+                                        <option>09</option>
+                                        <option selected>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                        <option>13</option>
+                                        <option>14</option>
+                                        <option>15</option>
+                                        <option>16</option>
+                                        <option>17</option>
+                                        <option>18</option>
+                                        <option>19</option>
+                                        <option>20</option>
+                                        <option>21</option>
+                                        <option>22</option>
+                                    </select>
+                                    <span class="separador">:</span>
+                                    <select class="input-horario" id="termino-min" name="termino-min">
+                                        <option selected>00</option>
+                                        <option>15</option>
+                                        <option>30</option>
+                                        <option>45</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="botoes-adicionar-materia">
+                        <button type="button" onclick="window.location.href='./4materias.html'" id="cancelar">Cancelar</button>
+                        <button type="submit" id="adicionar">Adicionar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div>
+                <h2 class="falso">Continuar</h2>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('form-aula').addEventListener('submit', function () {
+            const diaSelecionado = document.querySelector('input[name="dia"]:checked').id;
+
+            const diaLabel = diaSelecionado.charAt(0).toUpperCase() + diaSelecionado.slice(1);
+
+            const dados = {
+                materia: document.getElementById('input-materia').value,
+                dia: diaLabel,
+                inicioHora: document.getElementById('inicio-hora').value,
+                inicioMin: document.getElementById('inicio-min').value,
+                terminoHora: document.getElementById('termino-hora').value,
+                terminoMin: document.getElementById('termino-min').value,
+            };
+
+            const aulas = JSON.parse(sessionStorage.getItem('aulas') || '[]');
+            aulas.push(dados);
+            sessionStorage.setItem('aulas', JSON.stringify(aulas));
+        });
+    </script>
+</body>
+</html>
