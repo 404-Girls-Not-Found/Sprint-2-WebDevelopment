@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: darkslategray;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
+}
+
+.inicial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.principal {
+    position: relative;
+    display: inline-block;
+}
+
+.principal img {
+    display: block;
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 25px;
+}
+
+button {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Botão Modo Aula (topo esquerdo) */
+.btn-sair {
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    background-color: #09647e;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+}
+
+/* Bloco curso + matéria (abaixo do btn-sair) */
+.info-curso {
+    position: absolute;
+    top: 8%;
+    left: 5%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 6px 10px;
+    width: 90%;
+}
+
+.info-curso i {
+    font-size: 16px;
+    color: #aaa;
+    flex-shrink: 0;
+}
+
+.info-curso-textos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: 1;
+    gap: 6px;
+}
+
+#nome-curso {
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+#nome-materia {
+    color: #aaa;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+/* Botões Câmera e Documento */
+.btns-centro {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.btn-camera {
+    background-color: #09647e;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 23px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+.btn-documento {
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
+/* Botão gravar áudio */
+.btn-audio {
+    position: absolute;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(175, 0, 0);
+    border: none;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 15px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.gravando-audio {
+    position: absolute;
+    display: flex;
+    background-color: rgb(175, 0, 0);
+    border: 1px solid rgb(221, 0, 0);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 11px;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    gap: 10px;
+    opacity: 90%;
+    align-items: center;
+}
+
+#timer {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.btn-audio-parar {
+    background-color: rgb(175, 0, 0) !important;
+}
