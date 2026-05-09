@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./src/css/style10.css">
+    <title>Sair modo aula</title>
+</head>
+<body>
+    <div class="inicial">
+        <div class="principal">
+            <img src="./images/modo-aula.png" alt="tela de inicio">
+
+            <button class="btn-sair">
+                <i class="bx bx-chevron-down"></i> Modo Aula
+            </button>
+
+            <div class="info-curso">
+                <i class='bx bx-book-open'></i>
+                <div class="info-curso-textos">
+                    <span id="nome-curso"></span>
+                    <span id="nome-materia"></span>
+                </div>
+            </div>
+
+            <div class="btns-centro">
+                <button class="btn-camera">
+                    <i class="bx bx-camera-alt"></i> Câmera
+                </button>
+                <button class="btn-documento">
+                    <i class="bx bx-scan"></i> Documento
+                </button>
+            </div>
+
+            <button class="btn-audio">
+                <i class="bx bx-microphone"></i>
+                <span>Gravar áudio da aula</span>
+            </button>
+
+            <div class="overlay">
+                <div class="modal">
+                    <p>Você deseja sair do modo aula?</p>
+                    <div class="modal-btns">
+                        <button class="btn-continuar" onclick="window.location.href='./8home.html'">Continuar</button>
+                        <button class="btn-sair-confirmar" onclick="window.location.href='./1index.html'">Sair</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const nomeCurso = sessionStorage.getItem('nomeCurso') || '';
+        const aulas = JSON.parse(sessionStorage.getItem('aulas') || '[]');
+        const nomeMateria = aulas.length > 0 ? aulas[0].materia : '';
+
+        document.getElementById('nome-curso').textContent = nomeCurso;
+        document.getElementById('nome-materia').textContent = nomeMateria;
+    </script>
+</body>
+</html>
