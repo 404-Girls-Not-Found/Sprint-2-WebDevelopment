@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./src/css/style7.css">
+  <title>Revisão Aulas</title>
+</head>
+<body>
+  <div class="inicial">
+    <div class="principal">
+      <img src="./images/fundo_preto.png" alt="tela de inicio">
+
+      <i class="bx bx-arrow-big-left-line btn-voltar" onclick="window.location.href='./6aula-mais.html'"></i>
+      <h1 id="configure">Configure o modo aula</h1>
+
+      <div class="barra-progresso-curso">
+        <div class="step-atual"></div>
+        <div class="step-meio"></div>
+        <div class="step"></div>
+      </div>
+
+      <div class="check-section">
+        <div class="bx-check-wrap">
+          <i class="bx bx-check bx-check"></i>
+        </div>
+        <h2 class="revise">Revise seu cronograma</h2>
+        <p class="confirme">Confirme suas configurações do modo aula</p>
+      </div>
+
+      <div class="bloco-curso">
+        <span class="label-curso">Curso</span>
+        <p id="nome-curso-revisao"></p>
+      </div>
+
+      <p id="contador-aulas"></p>
+
+      <div id="lista-aulas-revisao"></div>
+
+      <div class="aviso">
+        <p>Sua câmera será ativada automaticamente no Modo Escola em cada horário de aula agendado, permitindo digitalização de documentos, fotos focadas e gravação de áudio das aulas.</p>
+      </div>
+
+      <button class="btn-ativar" onclick="confirmar()">Ativar modo aula</button>
+
+    </div>
+  </div>
+
+  <script>
+    function renderizarAulas() {
+      const aulas = JSON.parse(sessionStorage.getItem('aulas') || '[]');
+      const lista = document.getElementById('lista-aulas-revisao');
+      lista.innerHTML = '';
+
+      document.getElementById('contador-aulas').textContent =
+        `${aulas.length} aula${aulas.length !== 1 ? 's' : ''}`;
+
+      aulas.forEach(function (aula, index) {
+        const div = document.createElement('div');
+        div.classList.add('materia-adicionada');
+        div.innerHTML = `
+          <div class="icone-materia">
+            <i class='bx bx-book-open'></i>
+          </div>
+          <div class="info-aula">
+            <span class="nome-materia">${aula.materia}</span>
+            <span class="dia-materia">${aula.dia}</span>
+            <span class="horario-materia">
+              <i class='bx bx-time-five'></i>
+              ${aula.inicioHora}:${aula.inicioMin} - ${aula.terminoHora}:${aula.terminoMin}
+            </span>
+          </div>
+          <i class="bx bx-trash lixeira" onclick="removerAula(${index})"></i>
+        `;
+        lista.appendChild(div);
+      });
+
+      const nomeCurso = sessionStorage.getItem('nomeCurso');
+      if (nomeCurso) {
+        document.getElementById('nome-curso-revisao').textContent = nomeCurso;
+      }
+    }
+
+    function removerAula(index) {
+      const aulas = JSON.parse(sessionStorage.getItem('aulas') || '[]');
+      aulas.splice(index, 1);
+      sessionStorage.setItem('aulas', JSON.stringify(aulas));
+      renderizarAulas();
+    }
+
+    function confirmar() {
+      window.location.href = './8home.html';
+    }
+
+    renderizarAulas();
+  </script>
+</body>
+</html>
